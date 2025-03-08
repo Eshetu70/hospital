@@ -22,17 +22,144 @@ header {
     padding: 20px;
     text-align: center;
     position: relative;
-    width: 100%;
 }
 
-/* Hide H1 on Mobile */
+/* Language Selector */
+.header-left {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+/* Navigation Bar */
+
+
+/* Section Styling */
+main {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+.section {
+    background: white;
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    display: none; /* Hide all sections by default */
+}
+
+h2 {
+    color: #007bff;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+form input, form button {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Footer Styling */
+footer {
+    background: #3C3B6E;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: auto;
+}
+footer {
+    background: #3C3B6E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: auto;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+}
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 250px;
+}
+.footer-section h3 {
+    border-bottom: 2px solid gold;
+    padding-bottom: 5px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin: 5px 0;
+}
+.footer-section a {
+    color: white;
+    text-decoration: none;
+}
+.footer-section a:hover {
+    text-decoration: underline;
+}
+.social-icons a {
+    margin-right: 10px;
+    font-size: 20px;
+}
+/* Responsive Design */
 @media (max-width: 768px) {
-    h1 {
-        display: none;
+    form {
+        width: 80%;
+    }
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
-/* Menu Icon for Mobile */
+
+/* Menu Icon (Mobile View) */
+
+
+/* Reset Styles */
+
+
+/* Menu Icon (Mobile View) */
+
+/* Menu Icon (Mobile View) */
 .menu-icon {
     position: absolute;
     top: 15px;
@@ -40,13 +167,12 @@ header {
     font-size: 30px;
     cursor: pointer;
     color: #FFD700;
-    display: none;
+    display: flex;
 }
 
 /* Navigation */
 nav {
     background: #3C3B6E;
-    width: 100%;
 }
 
 nav ul {
@@ -92,6 +218,7 @@ nav ul li a:hover {
 
 .dropdown-menu li {
     display: block;
+    margin: 0;
 }
 
 .dropdown-menu li a {
@@ -106,7 +233,15 @@ nav ul li a:hover {
     color: #0056b3;
 }
 
-/* Mobile Navigation */
+/* Desktop: Show dropdown on hover */
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Mobile: Hide Navigation */
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
@@ -148,127 +283,369 @@ nav ul li a:hover {
         padding: 8px;
     }
 
+    /* Show Navigation when toggled */
     .nav-active {
         display: block;
     }
 
+    /* Dropdown menu should show in a vertical list on mobile */
     .dropdown.active .dropdown-menu {
         display: flex;
     }
 }
 
-/* Section Styling */
-main {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-}
 
-.section {
+/* Quality Healthcare Section */
+/* Home Section - Quality Healthcare */
+.healthcare-container {
+    text-align: center;
     background: white;
-    padding: 30px;
-    margin: 10px auto;
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
+    width: 80%;
     max-width: 900px;
+    margin: auto;
 }
 
-/* Buttons */
-button, .appointment-btn, .contact-btn {
+/* Icon for main section */
+.healthcare-icon i {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Features List */
+.healthcare-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.feature {
+    text-align: center;
+    width: 30%;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.feature i {
+    font-size: 30px;
+    color: #007bff;
+}
+
+.feature h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hover Effect */
+.feature:hover {
+    background: #f4f4f4;
+    transform: scale(1.05);
+}
+
+/* Appointment Button */
+.appointment-btn {
     display: inline-block;
+    margin-top: 20px;
     background: #007bff;
     color: white;
     padding: 12px 20px;
     text-decoration: none;
     font-size: 16px;
     border-radius: 5px;
-    border: none;
     transition: 0.3s;
 }
 
-button:hover, .appointment-btn:hover, .contact-btn:hover {
+.appointment-btn:hover {
     background: #0056b3;
 }
 
-/* Forms */
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
+/* Contact Info */
+.contact-info {
+    margin-top: 20px;
+    font-size: 16px;
 }
 
-form input, form button {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Footer */
-footer {
-    background: #3C3B6E;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    margin-top: auto;
-    width: 100%;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    margin: auto;
-    text-align: left;
-}
-
-.footer-section {
-    flex: 1;
-    padding: 10px;
-    min-width: 200px;
-}
-
-.footer-section h3 {
-    border-bottom: 2px solid gold;
-    padding-bottom: 5px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin: 5px 0;
-}
-
-.footer-section a {
-    color: white;
+.contact-info a {
+    color: #007bff;
     text-decoration: none;
+    font-weight: bold;
 }
 
-.footer-section a:hover {
+.contact-info a:hover {
     text-decoration: underline;
 }
 
-.social-icons a {
-    margin-right: 10px;
-    font-size: 20px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .feature, .service, .about-feature, .resource {
-        width: 100%;
-    }
 
-    .footer-container {
+
+
+
+/* About Us Section */
+.about-container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Icon for About Us */
+.about-icon i {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Features List */
+.about-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.about-feature {
+    text-align: center;
+    width: 30%;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.about-feature i {
+    font-size: 30px;
+    color: #007bff;
+}
+
+.about-feature h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.about-feature p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hover Effect */
+.about-feature:hover {
+    background: #f4f4f4;
+    transform: scale(1.05);
+}
+
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-feature {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+
+
+
+
+
+
+/* Services Section */
+.services-container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Services List */
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.service {
+    text-align: center;
+    width: 30%;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.service i {
+    font-size: 30px;
+    color: #007bff;
+}
+
+.service h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.service p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hover Effect */
+.service:hover {
+    background: #f4f4f4;
+    transform: scale(1.05);
+}
+
+/* Service Details Box */
+.service-details {
+    display: none;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.service-details h3 {
+    color: #007bff;
+}
+
+.service-details button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.service-details button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+
+
+
+/* Patient Resources Section */
+/* Patient Resources Section */
+.resources-container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Resources List */
+.resources-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+/* Individual Resource Box */
+.resource {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 48%;  /* Adjusted to fit two in a row */
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    background: #f8f9fa;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    gap: 15px;  /* Ensures icons and text are properly spaced */
+}
+
+.resource i {
+    font-size: 30px;
+    color: #007bff;
+}
+
+.resource-text {
+    flex-grow: 1;
+}
+
+.resource h3 {
+    font-size: 18px;
+    color: #007bff;
+    margin: 0;
+}
+
+.resource p {
+    font-size: 14px;
+    color: #333;
+    margin-top: 3px;
+    text-align: left;
+}
+
+/* Hover Effect */
+.resource:hover {
+    background: #e9ecef;
+    transform: scale(1.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .resources-list {
         flex-direction: column;
-        text-align: center;
+    }
+    .resource {
+        width: 100%;
     }
 }
