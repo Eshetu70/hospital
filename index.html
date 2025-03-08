@@ -59,6 +59,7 @@
         const menuIcon = document.querySelector(".menu-icon");
         const navbar = document.querySelector("nav");
         const dropdowns = document.querySelectorAll(".dropdown");
+        const menuLinks = document.querySelectorAll("nav ul li a");
     
         // Toggle mobile menu
         menuIcon.addEventListener("click", function () {
@@ -80,12 +81,13 @@
         });
     
         // Hide navigation when selecting a menu item
-        document.querySelectorAll("nav ul li a").forEach(link => {
+        menuLinks.forEach(link => {
             link.addEventListener("click", function () {
                 navbar.classList.remove("nav-active");
             });
         });
     });
+    
     
 </script>
     
