@@ -20,37 +20,37 @@
     </script>
 <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-        showSection('home');
-    
-        // Mobile Dropdown Handling
-        document.querySelectorAll('.dropdown > a').forEach(item => {
-            item.addEventListener('click', function (event) {
-                event.preventDefault();
-                let dropdownMenu = this.nextElementSibling;
-                dropdownMenu.style.display = (dropdownMenu.style.display === 'flex') ? 'none' : 'flex';
-            });
-        });
+   // Show Section Function
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
     });
-    
-    // Function to show only the selected section
-    function showSection(sectionId) {
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
-        });
-        document.getElementById(sectionId).style.display = 'block';
-    }
-    
-    // Toggle Mobile Menu
-    function toggleMenu() {
-        var navbar = document.getElementById('navbar');
-        if (navbar.style.display === "block") {
-            navbar.style.display = "none";
-        } else {
-            navbar.style.display = "block";
-        }
-    }
-    
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+// Toggle Mobile Menu
+function toggleMenu() {
+    var navbar = document.getElementById('navbar');
+    navbar.style.display = navbar.style.display === "block" ? "none" : "block";
+}
+
+// Show Service Details
+function showServiceDetails(serviceType) {
+    var serviceDetails = {
+        "checkups": "Regular health checkups for early disease detection and overall well-being.",
+        "pediatrics": "Expert care for children’s health, including vaccinations and growth monitoring.",
+        "dental": "Comprehensive dental services for a healthy and bright smile."
+    };
+    document.getElementById("service-title").textContent = serviceType;
+    document.getElementById("service-text").textContent = serviceDetails[serviceType];
+    document.getElementById("service-details").style.display = "block";
+}
+
+// Hide Service Details
+function hideServiceDetails() {
+    document.getElementById("service-details").style.display = "none";
+}
+
 </script>
 
 <script>

@@ -36,19 +36,24 @@ header {
 
 /* Section Styling */
 main {
+    background: linear-gradient(to right, #eef2f3, #dfe6e9); color: #333; line-height: 1.6; 
     flex: 1;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
+    width: 100%; /* Ensure full width */
+
+   
 }
+body { background: linear-gradient(to right, #eef2f3, #dfe6e9); color: #333; line-height: 1.6;  }
 
 .section {
-    background: white;
+    background: linear-gradient(to right, #eef2f3, #dfe6e9); color: #333; line-height: 1.6; 
     padding: 40px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+    margin: 0; /* Remove margins */
+    border-radius: 0; /* Remove rounded edges */
+    box-shadow: none; /* Remove shadow for a flat design */
+    width: 100%; /* Ensure it covers full width */
+    max-width: none; /* Remove max width constraint */
     display: none; /* Hide all sections by default */
 }
 
@@ -250,14 +255,36 @@ nav ul li a:hover {
 /* Home Section - Quality Healthcare */
 .healthcare-container {
     text-align: center;
-    background: white;
+    background: linear-gradient(to right, #eef2f3, #dfe6e9);
+    color: #333;
+    line-height: 1.6;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+
+    /* Add border with a gradient color */
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
+    border:#3C3B6E 2px solid;
 }
+
+/* Colored border effect */
+.healthcare-container::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 16px;
+    background: linear-gradient(to right, #007bff, #ff6b6b);
+    z-index: -1;
+}
+
 
 /* Icon for main section */
 .healthcare-icon i {
@@ -351,13 +378,21 @@ nav ul li a:hover {
 /* About Us Section */
 .about-container {
     text-align: center;
-    background: white;
+    background: linear-gradient(to right, #eef2f3, #dfe6e9);
+    color: #333;
+    line-height: 1.6;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+
+    /* Add border with a gradient color */
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
+    border:#3C3B6E 2px solid;
 }
 
 /* Icon for About Us */
@@ -438,13 +473,21 @@ nav ul li a:hover {
 /* Services Section */
 .services-container {
     text-align: center;
-    background: white;
+    background: linear-gradient(to right, #eef2f3, #dfe6e9);
+    color: #333;
+    line-height: 1.6;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+
+    /* Add border with a gradient color */
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
+    border:#3C3B6E 2px solid;
 }
 
 /* Services List */
@@ -529,13 +572,21 @@ nav ul li a:hover {
 /* Patient Resources Section */
 .resources-container {
     text-align: center;
-    background: white;
+    background: linear-gradient(to right, #eef2f3, #dfe6e9);
+    color: #333;
+    line-height: 1.6;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+
+    /* Add border with a gradient color */
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
+    border:#3C3B6E 4px solid;
 }
 
 /* Resources List */
@@ -664,14 +715,3 @@ nav ul li a:hover {
 
 
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .feature, .service, .about-feature, .resource {
-        width: 100%;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-}
