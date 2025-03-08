@@ -25,11 +25,11 @@ header {
     width: 100%;
 }
 
-/* Language Selector */
-.header-left {
-    position: absolute;
-    left: 20px;
-    top: 15px;
+/* Hide H1 on Mobile */
+@media (max-width: 768px) {
+    h1 {
+        display: none;
+    }
 }
 
 /* Menu Icon for Mobile */
@@ -43,7 +43,7 @@ header {
     display: none;
 }
 
-/* Navigation Bar */
+/* Navigation */
 nav {
     background: #3C3B6E;
     width: 100%;

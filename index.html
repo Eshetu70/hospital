@@ -52,6 +52,42 @@
     }
     
 </script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.querySelector(".menu-icon");
+        const navbar = document.querySelector("nav");
+        const dropdowns = document.querySelectorAll(".dropdown");
+    
+        // Toggle mobile menu
+        menuIcon.addEventListener("click", function () {
+            navbar.classList.toggle("nav-active");
+        });
+    
+        // Close dropdown when an item is selected
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener("click", function () {
+                let dropdownMenu = this.querySelector(".dropdown-menu");
+                dropdownMenu.classList.toggle("active");
+    
+                // Close dropdown after selection
+                dropdownMenu.addEventListener("click", function () {
+                    dropdownMenu.classList.remove("active");
+                    navbar.classList.remove("nav-active"); // Hide menu after selection
+                });
+            });
+        });
+    
+        // Hide navigation when selecting a menu item
+        document.querySelectorAll("nav ul li a").forEach(link => {
+            link.addEventListener("click", function () {
+                navbar.classList.remove("nav-active");
+            });
+        });
+    });
+    
+</script>
     
     
 
