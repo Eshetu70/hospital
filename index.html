@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Clinic</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+
+    <!-- Google Translate API -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,am,om,ti,es,fr,de,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showSection('home');
+    
+        // Mobile Dropdown Handling
+        document.querySelectorAll('.dropdown > a').forEach(item => {
+            item.addEventListener('click', function (event) {
+                event.preventDefault();
+                let dropdownMenu = this.nextElementSibling;
+                dropdownMenu.style.display = (dropdownMenu.style.display === 'flex') ? 'none' : 'flex';
+            });
+        });
+    });
+    
+    // Function to show only the selected section
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+    
+    // Toggle Mobile Menu
+    function toggleMenu() {
+        var navbar = document.getElementById('navbar');
+        if (navbar.style.display === "block") {
+            navbar.style.display = "none";
+        } else {
+            navbar.style.display = "block";
+        }
+    }
+    
+</script>
+    
+    
+
+
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div id="google_translate_element"></div>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <h1>Welcome to Standard Clinic</h1>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#" onclick="showSection('services')">Services ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="showSection('services'); showServiceDetails('checkups')">General Checkups</a></li>
+                        <li><a href="#" onclick="showSection('services'); showServiceDetails('pediatrics')">Pediatrics</a></li>
+                        <li><a href="#" onclick="showSection('services'); showServiceDetails('dental')">Dental Care</a></li>
+                        <li><a href="#" onclick="showSection('services'); showServiceDetails('lab-tests')">Lab Tests</a></li>
+                        <li><a href="#" onclick="showSection('services'); showServiceDetails('vaccinations')">Vaccinations</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#" onclick="showSection('appointment')">Appointment</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" onclick="showSection('resources')">Patient Resources</a></li>
+                <li><a href="#" onclick="showSection('blog')">Blog</a></li>
+                <li><a href="#" onclick="showSection('testimonials')">Testimonials</a></li>
+                <li><a href="#" onclick="showSection('gallery')">Gallery</a></li>
+                <li><a href="#" onclick="showSection('privacy')">Privacy Policy</a></li>
+                <li><a href="#" onclick="showSection('emergency')">Emergency Info</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    
+
+    <main>
+        <section id="home" class="section">
+            <div class="healthcare-container">
+                <div class="healthcare-icon">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+                <h2>Quality Healthcare You Can Trust</h2>
+                <p>Your health is our priority. Book an appointment today!</p>
+        
+                <div class="healthcare-features">
+                    <div class="feature">
+                        <i class="fas fa-stethoscope"></i>
+                        <h3>Comprehensive Healthcare</h3>
+                        <p>We provide general checkups, specialized treatments, and more.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Experienced Doctors</h3>
+                        <p>Our certified doctors and nurses are dedicated to your well-being.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clinic-medical"></i>
+                        <h3>State-of-the-Art Facilities</h3>
+                        <p>Modern medical technology for accurate diagnosis and treatment.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Easy Appointments</h3>
+                        <p>Book your consultation online or call us for assistance.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h3>Patient-Centered Care</h3>
+                        <p>Your comfort and satisfaction are our priorities.</p>
+                    </div>
+                </div>
+        
+                <a href="appointment" class="appointment-btn">📅 Book an Appointment</a>
+        
+                <div class="contact-info">
+                    <p>📞 <strong>Call Us:</strong> +1 234 567 890</p>
+                    <p>🌍 <strong>Visit Us:</strong> <a href="#">www.standardclinic.com</a></p>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="about-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>About Us</h2>
+                <p>We are a team of dedicated healthcare professionals providing top-notch medical services.</p>
+        
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Expert Medical Team</h3>
+                        <p>Our highly skilled doctors and specialists are committed to your health.</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-hospital"></i>
+                        <h3>World-Class Facilities</h3>
+                        <p>We provide modern medical technology for the best healthcare experience.</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Patient-First Approach</h3>
+                        <p>Your well-being is at the heart of everything we do.</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Trusted by Thousands</h3>
+                        <p>Providing healthcare excellence to countless satisfied patients.</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-ambulance"></i>
+                        <h3>Emergency Services</h3>
+                        <p>24/7 emergency care for urgent medical situations.</p>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="contact-btn">📞 Contact Us</a>
+            </div>
+        </section>
+        
+
+        <section id="services" class="section">
+            <div class="services-container">
+                <h2>Our Services</h2>
+                <p>Click on a service to learn more.</p>
+        
+                <div class="services-list">
+                    <div class="service" onclick="showServiceDetails('checkups')">
+                        <i class="fas fa-user-md"></i>
+                        <h3>General Checkups</h3>
+                        <p>Click to learn more.</p>
+                    </div>
+                    <div class="service" onclick="showServiceDetails('pediatrics')">
+                        <i class="fas fa-baby"></i>
+                        <h3>Pediatrics</h3>
+                        <p>Click to learn more.</p>
+                    </div>
+                    <div class="service" onclick="showServiceDetails('dental')">
+                        <i class="fas fa-tooth"></i>
+                        <h3>Dental Care</h3>
+                        <p>Click to learn more.</p>
+                    </div>
+                    <div class="service" onclick="showServiceDetails('lab-tests')">
+                        <i class="fas fa-vials"></i>
+                        <h3>Lab Tests</h3>
+                        <p>Click to learn more.</p>
+                    </div>
+                    <div class="service" onclick="showServiceDetails('vaccinations')">
+                        <i class="fas fa-syringe"></i>
+                        <h3>Vaccinations</h3>
+                        <p>Click to learn more.</p>
+                    </div>
+                </div>
+        
+                <!-- Hidden Details Box -->
+                <div id="service-details" class="service-details">
+                    <h3 id="service-title"></h3>
+                    <p id="service-text"></p>
+                    <button onclick="hideServiceDetails()">Close</button>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="appointment" class="section">
+            <h2>Book an Appointment</h2>
+            <form id="appointment-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" required>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <p id="confirmation-message"></p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>Email: contact@standardclinic.com</p>
+            <p>Phone: +1 234 567 890</p>
+        </section>
+
+        <section id="resources" class="section">
+            <div class="resources-container">
+                <h2>Patient Resources</h2>
+                <p>We are committed to providing you with the best healthcare experience. Explore essential patient resources, including forms, insurance details, and FAQs.</p>
+        
+                <div class="resources-list">
+                    <div class="resource" onclick="showResourceDetails('patient-forms')">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>New Patient Forms</h3>
+                        <p>Download and complete forms before your visit.</p>
+                    </div>
+                    <div class="resource" onclick="showResourceDetails('insurance')">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Insurance & Billing</h3>
+                        <p>Check accepted insurance providers and payment options.</p>
+                    </div>
+                    <div class="resource" onclick="showResourceDetails('faqs')">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Frequently Asked Questions</h3>
+                        <p>Find answers to common patient queries.</p>
+                    </div>
+                    <div class="resource" onclick="showResourceDetails('rights')">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Patient Rights & Responsibilities</h3>
+                        <p>Learn about your rights and responsibilities as a patient.</p>
+                    </div>
+                    <div class="resource" onclick="showResourceDetails('appointments')">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Appointments & Scheduling</h3>
+                        <p>Information on booking, cancellations, and appointment guidelines.</p>
+                    </div>
+                </div>
+        
+                <!-- Hidden Details Box -->
+                <div id="resource-details" class="resource-details">
+                    <h3 id="resource-title"></h3>
+                    <p id="resource-text"></p>
+                    <button onclick="hideResourceDetails()">Close</button>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="blog" class="section">
+            <h2>Health Blog</h2>
+            <p>Read the latest health tips, medical news, and updates.</p>
+        </section>
+
+        <section id="testimonials" class="section">
+            <h2>Patient Testimonials</h2>
+            <p>See what our patients have to say about our services.</p>
+        </section>
+
+        <section id="gallery" class="section">
+            <h2>Clinic Gallery</h2>
+            <p>Browse images of our clinic, staff, and facilities.</p>
+        </section>
+
+        <section id="privacy" class="section">
+            <h2>Privacy Policy</h2>
+            <p>Learn how we protect your data and ensure patient confidentiality.</p>
+        </section>
+
+        <section id="emergency" class="section">
+            <h2>Emergency Information</h2>
+            <p>In case of emergencies, call our 24/7 hotline.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We are a team of dedicated healthcare professionals providing top-notch medical services.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about-content">About Us</a></li>
+                    <li><a href="#services-content">Services</a></li>
+                    <li><a href="#contact-content">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><strong>Address:</strong> <a href="#" target="_blank">Addis Ababa/Hawwasa</a></p>
+                <p><strong>Phone:</strong> (244) 698-414</p>
+                <p><strong>Email:</strong> <a href="mailto:robelmamo9@gmail.com">melickstandard@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2025 Meleick Standard Clinic - All Rights Reserved</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+     <!-- FontAwesome Icons (Make Sure This is in Your Page) -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+     crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            showSection('home');
+
+            const form = document.getElementById("appointment-form");
+            const confirmationMessage = document.getElementById("confirmation-message");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const date = document.getElementById("date").value;
+
+                if (name && email && date) {
+                    confirmationMessage.textContent = `Thank you, ${name}! Your appointment on ${date} has been booked.`;
+                    confirmationMessage.style.color = "green";
+                    form.reset();
+                } else {
+                    confirmationMessage.textContent = "Please fill in all fields correctly.";
+                    confirmationMessage.style.color = "red";
+                }
+            });
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+
+      <!-- FontAwesome Icons (Make Sure This is in Your Page) -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+      crossorigin="anonymous"></script>
+ 
+
+
+
+
+      <script>
+
+        // Function to show detailed information when a service is clicked
+function showServiceDetails(serviceType) {
+    var detailBox = document.getElementById("service-details");
+    var title = document.getElementById("service-title");
+    var text = document.getElementById("service-text");
+
+    var serviceDetails = {
+        "checkups": {
+            title: "General Checkups",
+            text: "Regular health checkups help detect diseases early and improve overall well-being. Our doctors provide comprehensive physical exams, screenings, and preventive care."
+        },
+        "pediatrics": {
+            title: "Pediatrics",
+            text: "We specialize in child healthcare, providing vaccinations, growth monitoring, and treatment for common childhood illnesses to ensure your child’s well-being."
+        },
+        "dental": {
+            title: "Dental Care",
+            text: "Our dental services include cleanings, fillings, extractions, and cosmetic dentistry to keep your smile healthy and beautiful."
+        },
+        "lab-tests": {
+            title: "Lab Tests",
+            text: "We offer a variety of lab tests, including blood work, diagnostic screenings, and specialized testing to ensure accurate health assessments."
+        },
+        "vaccinations": {
+            title: "Vaccinations",
+            text: "Protect yourself and your loved ones from diseases with our immunization services, including flu shots, COVID-19 vaccines, and routine vaccinations."
+        }
+    };
+
+    title.textContent = serviceDetails[serviceType].title;
+    text.textContent = serviceDetails[serviceType].text;
+    
+    detailBox.style.display = "block";
+}
+
+// Function to hide the service details box
+function hideServiceDetails() {
+    document.getElementById("service-details").style.display = "none";
+}
+
+      </script>
+
+
+
+
+      <script>
+
+
+        // Function to show detailed information when a resource is clicked
+function showResourceDetails(resourceType) {
+    var detailBox = document.getElementById("resource-details");
+    var title = document.getElementById("resource-title");
+    var text = document.getElementById("resource-text");
+
+    var resourceDetails = {
+        "patient-forms": {
+            title: "New Patient Forms",
+            text: "Download and complete our patient intake forms before your visit to save time during check-in. Forms include medical history, insurance information, and consent forms."
+        },
+        "insurance": {
+            title: "Insurance & Billing",
+            text: "We accept a variety of insurance plans. Please check with your provider to confirm coverage. Payment options include cash, credit/debit cards, and financing options for certain treatments."
+        },
+        "faqs": {
+            title: "Frequently Asked Questions",
+            text: "Find answers to common questions regarding appointment scheduling, insurance policies, medical services, and more."
+        },
+        "rights": {
+            title: "Patient Rights & Responsibilities",
+            text: "As a patient, you have the right to receive respectful care, access to your medical records, and make informed decisions about your treatment. You are also responsible for providing accurate medical history and following treatment plans."
+        },
+        "appointments": {
+            title: "Appointments & Scheduling",
+            text: "Easily book appointments online or via phone. We provide reminders for upcoming visits. Please notify us at least 24 hours in advance for cancellations or rescheduling."
+        }
+    };
+
+    title.textContent = resourceDetails[resourceType].title;
+    text.textContent = resourceDetails[resourceType].text;
+    
+    detailBox.style.display = "block";
+}
+
+// Function to hide the resource details box
+function hideResourceDetails() {
+    document.getElementById("resource-details").style.display = "none";
+}
+
+      </script>
+     
+</body>
+</html>
