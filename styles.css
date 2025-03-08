@@ -48,7 +48,7 @@ body { background: linear-gradient(to right, #eef2f3, #dfe6e9); color: #333; lin
 
 .section {
     background: linear-gradient(to right, #eef2f3, #dfe6e9); color: #333; line-height: 1.6; 
-    padding: 20px;
+    padding: 10px;
     margin: 0; /* Remove margins */
     border-radius: 0; /* Remove rounded edges */
     box-shadow: none; /* Remove shadow for a flat design */
@@ -263,7 +263,7 @@ nav ul li a:hover {
     background: linear-gradient(to right, #eef2f3, #dfe6e9);
     color: #333;
     line-height: 1.6;
-    padding: 10px;
+    padding: 5px;
     border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -386,7 +386,7 @@ nav ul li a:hover {
     background: linear-gradient(to right, #eef2f3, #dfe6e9);
     color: #333;
     line-height: 1.6;
-    padding: 10px;
+    padding: 5px;
     border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -481,7 +481,7 @@ nav ul li a:hover {
     background: linear-gradient(to right, #eef2f3, #dfe6e9);
     color: #333;
     line-height: 1.6;
-    padding: 10px;
+    padding: 5px;
     border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -580,7 +580,7 @@ nav ul li a:hover {
     background: linear-gradient(to right, #eef2f3, #dfe6e9);
     color: #333;
     line-height: 1.6;
-    padding: 10px;
+    padding: 5px;
     border-radius: 12px; /* Increased radius for better visibility */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
