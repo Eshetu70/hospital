@@ -142,6 +142,11 @@ footer {
 }
 /* Responsive Design */
 @media (max-width: 768px) {
+
+    header {
+        height: 70px; /* Increase height slightly for mobile */
+        padding: 12px 20px;
+    }
     form {
         width: 80%;
     }
