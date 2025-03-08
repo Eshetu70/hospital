@@ -140,6 +140,9 @@ footer {
     form {
         width: 80%;
     }
+     h1 {
+        display: none;
+    }
     nav ul li {
         display: block;
         margin: 10px 0;
