@@ -286,11 +286,12 @@
         <div class="logo">
           <img src="logo.png" alt="Nile Online Market Logo">
         </div>
-        <nav>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <nav id="mainNav">
           <ul>
             <li><a href="#">Home</a></li>
             <li class="dropdown">
-              <a href="#">Shop</a>
+              <a href="#" onclick="toggleDropdown(event)">Shop</a>
               <ul class="dropdown-menu">
                 <li class="sub-dropdown">
                   <a href="#">Clothing</a>
@@ -350,6 +351,68 @@
           </ul>
         </nav>
       </header>
+      
+      <style>
+        .nav-toggle {
+          display: none;
+          font-size: 26px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+      
+        @media (max-width: 768px) {
+          .nav-toggle {
+            display: block;
+          }
+      
+          nav {
+            display: none;
+            width: 100%;
+          }
+      
+          nav.active {
+            display: block;
+          }
+      
+          nav ul {
+            flex-direction: column;
+            gap: 0;
+            background-color: #131921;
+          }
+      
+          nav ul li a {
+            padding: 12px 20px;
+            border-top: 1px solid #222;
+          }
+      
+          .dropdown-menu,
+          .sub-menu {
+            position: static;
+            width: 100%;
+            display: none;
+          }
+      
+          .dropdown.open .dropdown-menu,
+          .sub-dropdown.open .sub-menu {
+            display: block;
+          }
+        }
+      </style>
+      
+      <script>
+        function toggleNav() {
+          document.getElementById('mainNav').classList.toggle('active');
+        }
+      
+        function toggleDropdown(event) {
+          event.preventDefault();
+          const parent = event.target.closest('.dropdown');
+          parent.classList.toggle('open');
+        }
+      </script>
+      
       
 
     <section class="hero">
