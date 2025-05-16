@@ -288,13 +288,13 @@
         </div>
         <button class="nav-toggle" onclick="toggleNav()">☰</button>
         <nav id="mainNav">
-          <ul>
+          <ul class="main-menu">
             <li><a href="#">Home</a></li>
             <li class="dropdown">
               <a href="#" onclick="toggleDropdown(event)">Shop</a>
               <ul class="dropdown-menu">
                 <li class="sub-dropdown">
-                  <a href="#">Clothing</a>
+                  <a href="#" onclick="toggleSubDropdown(event)">Clothing</a>
                   <ul class="sub-menu">
                     <li><a href="apparel-women.html">Women</a></li>
                     <li><a href="apparel-women-dresses.html">Dresses</a></li>
@@ -306,7 +306,7 @@
                   </ul>
                 </li>
                 <li class="sub-dropdown">
-                  <a href="#">Electronics & Supplies</a>
+                  <a href="#" onclick="toggleSubDropdown(event)">Electronics & Supplies</a>
                   <ul class="sub-menu">
                     <li><a href="materials-books.html">Books</a></li>
                     <li><a href="materials-phones.html">Phones</a></li>
@@ -314,7 +314,7 @@
                   </ul>
                 </li>
                 <li class="sub-dropdown">
-                  <a href="#">Automotive</a>
+                  <a href="#" onclick="toggleSubDropdown(event)">Automotive</a>
                   <ul class="sub-menu">
                     <li><a href="vehicles-cars.html">Cars</a></li>
                     <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
@@ -322,7 +322,7 @@
                   </ul>
                 </li>
                 <li class="sub-dropdown">
-                  <a href="#">Foods & Grains</a>
+                  <a href="#" onclick="toggleSubDropdown(event)">Foods & Grains</a>
                   <ul class="sub-menu">
                     <li><a href="foods-tef.html">Tef</a></li>
                     <li><a href="foods-wheat.html">Wheat</a></li>
@@ -330,7 +330,7 @@
                   </ul>
                 </li>
                 <li class="sub-dropdown">
-                  <a href="#">Gulit Market</a>
+                  <a href="#" onclick="toggleSubDropdown(event)">Gulit Market</a>
                   <ul class="sub-menu">
                     <li><a href="gulit-rice.html">Rice</a></li>
                     <li><a href="gulit-oil.html">Cooking Oil</a></li>
@@ -348,8 +348,6 @@
             </li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Menu</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="#">Support</a></li>
           </ul>
         </nav>
       </header>
@@ -401,15 +399,19 @@
             display: block;
           }
       
-          nav ul {
+          nav ul.main-menu {
             flex-direction: column;
             gap: 0;
             background-color: #131921;
           }
       
-          nav ul li a {
-            padding: 12px 20px;
+          nav ul.main-menu > li > a {
+            padding: 14px 20px;
             border-top: 1px solid #222;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #131921;
+            color: white;
           }
       
           .dropdown-menu,
@@ -417,6 +419,7 @@
             position: static;
             width: 100%;
             display: none;
+            background-color: #fff;
           }
       
           .dropdown.open .dropdown-menu,
@@ -428,19 +431,31 @@
       
       <script>
         function toggleNav() {
-          document.getElementById('mainNav').classList.toggle('active');
+          const nav = document.getElementById('mainNav');
+          nav.classList.toggle('active');
+          // Close all dropdowns when main menu is toggled
+          document.querySelectorAll('.dropdown, .sub-dropdown').forEach(el => {
+            el.classList.remove('open');
+          });
         }
       
         function toggleDropdown(event) {
           event.preventDefault();
           const parent = event.target.closest('.dropdown');
-          const openDropdowns = document.querySelectorAll('.dropdown.open');
-          openDropdowns.forEach(el => {
-            if (el !== parent) el.classList.remove('open');
-          });
-          parent.classList.toggle('open');
+          const isOpen = parent.classList.contains('open');
+          document.querySelectorAll('.dropdown').forEach(el => el.classList.remove('open'));
+          if (!isOpen) parent.classList.add('open');
+        }
+      
+        function toggleSubDropdown(event) {
+          event.preventDefault();
+          const parent = event.target.closest('.sub-dropdown');
+          const isOpen = parent.classList.contains('open');
+          document.querySelectorAll('.sub-dropdown').forEach(el => el.classList.remove('open'));
+          if (!isOpen) parent.classList.add('open');
         }
       </script>
+      
       
       
       
