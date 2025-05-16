@@ -6,363 +6,24 @@
     <title>Nile Online Market</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
-
+      
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+          font-family: Arial, Helvetica, sans-serif;
+          background-color: #f5f5f5;
+          color: #333;
         }
-
-        header {
-            background-color: #131921;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo img {
-            height: 50px;
-            object-fit: contain;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #febd69;
-        }
-
-        .hero {
-            background: linear-gradient(to right, #007b8f, #00bfa5);
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px 60px;
-        }
-
-        .hero img {
-            width: 65%;
-            height: 230px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .hero button {
-            padding: 12px 30px;
-            background-color: #febd69;
-            color: #131921;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-        }
-
-        .hero button:hover {
-            background-color: #f3a847;
-        }
-
-        .categories, .featured-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 60px 40px;
-            background-color: #fff;
-        }
-
-        .category-box, .product-card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            text-align: left;
-        }
-
-        .category-box:hover, .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .category-box h3 a, .product-card h3 {
-            color: #007b8f;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-
-        .category-box ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 10px;
-        }
-
-        .category-box ul li {
-            font-size: 0.95em;
-            margin-bottom: 5px;
-        }
-
-        .category-box ul li a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .category-box ul li a:hover {
-            text-decoration: underline;
-            color: #007b8f;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .product-card p {
-            color: #007b8f;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            nav ul {
-                gap: 15px;
-            }
-            header {
-                padding: 10px 20px;
-            }
-        }
-
-
-        @media (max-width: 768px) {
-            nav ul {
-              flex-direction: column;
-              gap: 0;
-            }
-          
-            .dropdown-menu,
-            .sub-menu {
-              position: static !important; /* Remove absolute positioning */
-              width: 100%;
-              box-shadow: none;
-              animation: none;
-              display: none;
-              background-color: #fff;
-            }
-          
-            .dropdown-menu.show,
-            .sub-menu.show {
-              display: block;
-            }
-          
-            nav ul li a {
-              padding: 12px 16px;
-            }
-          }
-          
-    </style>
-</head>
-<body>
-
-    <style>
-       
-            nav ul {
-              list-style: none;
-              margin: 0;
-              padding: 0;
-              display: flex;
-              gap: 30px;
-              position: relative;
-            }
-          
-            nav ul li {
-              position: relative;
-            }
-          
-            nav ul li a {
-              color: #fff;
-              text-decoration: none;
-              font-weight: 600;
-              font-size: 14px;
-              text-transform: uppercase;
-              transition: color 0.3s ease;
-              padding: 10px;
-              display: inline-block;
-            }
-          
-            nav ul li a:hover {
-              color: #febd69;
-            }
-          
-            .dropdown-menu,
-            .sub-menu {
-              display: none;
-              position: absolute;
-              top: 100%;
-              left: 0;
-              background-color: #fff;
-              color: #333;
-              min-width: 200px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-              z-index: 999;
-              animation: fadeIn 0.3s ease-in-out;
-            }
-          
-            .dropdown:hover .dropdown-menu,
-            .sub-dropdown:hover .sub-menu {
-              display: block;
-            }
-          
-            .dropdown-menu li,
-            .sub-menu li {
-              position: relative;
-            }
-          
-            .dropdown-menu a,
-            .sub-menu a {
-              color: #131921;
-              text-decoration: none;
-              display: block;
-              padding: 10px 15px;
-              font-size: 14px;
-              white-space: nowrap;
-              display: flex;
-              align-items: center;
-              gap: 8px;
-            }
-          
-            .dropdown-menu a:hover,
-            .sub-menu a:hover {
-              background-color: #f5f5f5;
-              color: #007b8f;
-            }
-          
-            .sub-menu {
-              top: 0;
-              left: auto;
-              right: 100%; /* Push sub-menu to the left side */
-            }
-          
-            @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(5px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-         
-      </style>
-      <header class="site-header">
-        <div class="header-top">
-          <div class="logo">
-            <img src="logo.png" alt="Nile Online Market Logo">
-          </div>
-          <button class="nav-toggle" onclick="toggleNav()">☰</button>
-        </div>
       
-        <nav id="mainNav">
-          <div class="nav-header">
-            <span>Menu</span>
-            <button class="close-btn" onclick="toggleNav()">✕</button>
-          </div>
-          <ul class="main-menu">
-            <li><a href="#">Home</a></li>
-            <li class="dropdown">
-              <a href="#" onclick="toggleDropdown(event)">Shop</a>
-              <ul class="dropdown-menu">
-                <li class="sub-dropdown">
-                  <a href="#" onclick="toggleSubDropdown(event)">Clothing</a>
-                  <ul class="sub-menu">
-                    <li><a href="apparel-women.html">Women</a></li>
-                    <li><a href="apparel-women-dresses.html">Dresses</a></li>
-                    <li><a href="apparel-women-bags.html">Hand Bags</a></li>
-                    <li><a href="apparel-men.html">Men</a></li>
-                    <li><a href="apparel-men-shirts.html">Shirts</a></li>
-                    <li><a href="apparel-men-pants.html">Pants</a></li>
-                    <li><a href="apparel-men-suits.html">Suits</a></li>
-                  </ul>
-                </li>
-                <li class="sub-dropdown">
-                  <a href="#" onclick="toggleSubDropdown(event)">Electronics & Supplies</a>
-                  <ul class="sub-menu">
-                    <li><a href="materials-books.html">Books</a></li>
-                    <li><a href="materials-phones.html">Phones</a></li>
-                    <li><a href="materials-laptops.html">Laptops</a></li>
-                  </ul>
-                </li>
-                <li class="sub-dropdown">
-                  <a href="#" onclick="toggleSubDropdown(event)">Automotive</a>
-                  <ul class="sub-menu">
-                    <li><a href="vehicles-cars.html">Cars</a></li>
-                    <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
-                    <li><a href="vehicles-bicycles.html">Bicycles</a></li>
-                  </ul>
-                </li>
-                <li class="sub-dropdown">
-                  <a href="#" onclick="toggleSubDropdown(event)">Foods & Grains</a>
-                  <ul class="sub-menu">
-                    <li><a href="foods-tef.html">Tef</a></li>
-                    <li><a href="foods-wheat.html">Wheat</a></li>
-                    <li><a href="foods-tastefoods.html">Taste Foods</a></li>
-                  </ul>
-                </li>
-                <li class="sub-dropdown">
-                  <a href="#" onclick="toggleSubDropdown(event)">Gulit Market</a>
-                  <ul class="sub-menu">
-                    <li><a href="gulit-rice.html">Rice</a></li>
-                    <li><a href="gulit-oil.html">Cooking Oil</a></li>
-                    <li><a href="gulit-spices.html">Spices</a></li>
-                    <li><a href="gulit-coffee.html">Ethiopian Coffee</a></li>
-                    <li><a href="gulit-berbere.html">Berbere</a></li>
-                    <li><a href="gulit-shiro.html">Shiro</a></li>
-                    <li><a href="gulit-onions.html">Red Onions</a></li>
-                    <li><a href="gulit-garlic.html">Garlic</a></li>
-                    <li><a href="gulit-pasta.html">Macaroni / Pasta</a></li>
-                    <li><a href="gulit-flour.html">Wheat Flour</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-      
-      <style>
+        /* Header Styles */
+        header,
         .site-header {
           background-color: #131921;
           position: sticky;
           top: 0;
-          z-index: 999;
+          z-index: 1000;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
       
@@ -370,11 +31,12 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 10px 20px;
+          padding: 16px 20px;
         }
       
         .logo img {
-          height: 45px;
+          height: 70px;
+          max-width: 300px;
           object-fit: contain;
         }
       
@@ -385,6 +47,14 @@
           border: none;
           color: white;
           cursor: pointer;
+        }
+      
+        .nav-toggle {
+          display: block;
+          margin-left: auto;
+        }
+      
+        .close-btn {
           display: none;
         }
       
@@ -394,6 +64,19 @@
           align-items: center;
           background: #131921;
           padding: 10px 20px;
+        }
+      
+        /* Navigation Styles */
+        nav {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: #131921;
+        }
+      
+        /* ✅ This line is added outside media query */
+        nav.active {
+          display: flex;
         }
       
         nav ul {
@@ -412,36 +95,32 @@
         nav ul li a {
           color: white;
           text-decoration: none;
+          font-weight: 600;
+          font-size: 14px;
+          text-transform: uppercase;
           padding: 14px 20px;
           display: block;
-          font-weight: bold;
           background-color: #131921;
+          transition: color 0.3s ease;
+        }
+      
+        nav ul li a:hover {
+          color: #febd69;
         }
       
         .dropdown-menu,
         .sub-menu {
           display: none;
-          flex-direction: column;
-          background-color: #febd69;
           position: absolute;
           top: 100%;
           left: 0;
-          z-index: 999;
-          min-width: 220px;
+          background-color: #fff;
+          color: #333;
+          min-width: 200px;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-      
-        .dropdown:hover > .dropdown-menu,
-        .sub-dropdown:hover > .sub-menu {
-          display: flex;
-        }
-      
-        /* DROP LEFT submenu */
-        .sub-dropdown .sub-menu {
-          top: 0;
-          right: 100%;
-          left: auto;
-          background-color: #fff5e6;
+          z-index: 999;
+          animation: fadeIn 0.3s ease-in-out;
+          flex-direction: column;
         }
       
         .dropdown-menu a,
@@ -451,6 +130,11 @@
           padding: 12px 20px;
           font-style: italic;
           border-bottom: 1px solid #eee;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          text-decoration: none;
+          white-space: nowrap;
         }
       
         .dropdown-menu a:hover,
@@ -459,9 +143,144 @@
           color: #007b8f;
         }
       
+        .dropdown:hover > .dropdown-menu,
+        .sub-dropdown:hover > .sub-menu {
+          display: flex;
+        }
+      
+        .sub-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            right: auto;
+            background-color: #fff5e6;
+            max-height: 80vh;       /* Adjusted for safe visible height */
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 999;
+          }
+          
+      
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(5px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      
+        /* Hero Section */
+        .hero {
+          background: linear-gradient(to right, #007b8f, #00bfa5);
+          color: #fff;
+          text-align: center;
+          padding: 100px 20px 60px;
+        }
+      
+        .hero img {
+          width: 65%;
+          height: 230px;
+          margin-bottom: 20px;
+        }
+      
+        .hero h1 {
+          font-size: 3em;
+          margin-bottom: 10px;
+        }
+      
+        .hero p {
+          font-size: 1.2em;
+          margin-bottom: 30px;
+        }
+      
+        .hero button {
+          padding: 12px 30px;
+          background-color: #febd69;
+          color: #131921;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: 600;
+          text-transform: uppercase;
+          transition: background-color 0.3s ease;
+        }
+      
+        .hero button:hover {
+          background-color: #f3a847;
+        }
+      
+        /* Category and Product Grid */
+        .categories,
+        .featured-products {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          padding: 60px 40px;
+          background-color: #fff;
+        }
+      
+        .category-box,
+        .product-card {
+          background-color: #f9f9f9;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s;
+          text-align: left;
+        }
+      
+        .category-box:hover,
+        .product-card:hover {
+          transform: translateY(-5px);
+        }
+      
+        .category-box h3 a,
+        .product-card h3 {
+          color: #007b8f;
+          text-decoration: none;
+          font-size: 1.2em;
+        }
+      
+        .category-box ul {
+          list-style: none;
+          padding-left: 0;
+          margin-top: 10px;
+        }
+      
+        .category-box ul li {
+          font-size: 0.95em;
+          margin-bottom: 5px;
+        }
+      
+        .category-box ul li a {
+          color: #333;
+          text-decoration: none;
+        }
+      
+        .category-box ul li a:hover {
+          text-decoration: underline;
+          color: #007b8f;
+        }
+      
+        .product-card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 10px;
+        }
+      
+        .product-card p {
+          color: #007b8f;
+          font-weight: bold;
+        }
+      
+        /* Responsive Styles */
         @media (max-width: 768px) {
-          .nav-toggle {
-            display: block;
+          .hero h1 {
+            font-size: 2em;
+          }
+      
+          header,
+          .header-top {
+            padding: 10px 20px;
           }
       
           .nav-header {
@@ -472,11 +291,6 @@
             display: none;
             flex-direction: column;
             background-color: #131921;
-            width: 100%;
-          }
-      
-          nav.active {
-            display: flex;
           }
       
           nav ul {
@@ -488,7 +302,6 @@
             border-top: 1px solid #222;
           }
       
-          /* Disable hover on mobile */
           .dropdown:hover .dropdown-menu,
           .sub-dropdown:hover .sub-menu {
             display: none;
@@ -505,39 +318,130 @@
             background-color: #fff8dc;
           }
         }
+
+        .sub-menu::-webkit-scrollbar {
+            width: 6px;
+          }
+          
+          .sub-menu::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+          }
+          
       </style>
       
-      <script>
-        function toggleNav() {
-          const nav = document.getElementById("mainNav");
-          nav.classList.toggle("active");
-          document.querySelectorAll(".dropdown, .sub-dropdown").forEach(el => el.classList.remove("open"));
-        }
       
-        function toggleDropdown(event) {
-          event.preventDefault();
-          const dropdown = event.target.closest(".dropdown");
-          const isOpen = dropdown.classList.contains("open");
-          document.querySelectorAll(".dropdown").forEach(el => el.classList.remove("open"));
-          if (!isOpen) dropdown.classList.add("open");
-        }
       
-        function toggleSubDropdown(event) {
-          event.preventDefault();
-          const sub = event.target.closest(".sub-dropdown");
-          const isOpen = sub.classList.contains("open");
-          document.querySelectorAll(".sub-dropdown").forEach(el => el.classList.remove("open"));
-          if (!isOpen) sub.classList.add("open");
-        }
-      
-        document.addEventListener("click", function (e) {
-          if (!e.target.closest("header")) {
-            document.getElementById("mainNav").classList.remove("active");
-            document.querySelectorAll(".dropdown, .sub-dropdown").forEach(el => el.classList.remove("open"));
-          }
-        });
-      </script>
-      
+</head>
+<body>
+
+    
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">
+        <img src="logo.png" alt="Nile Online Market Logo">
+      </div>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  
+    <nav id="mainNav">
+      <div class="nav-header">
+        <span>Menu</span>
+        <button class="close-btn" onclick="toggleNav()">✕</button>
+      </div>
+      <ul class="main-menu">
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#" onclick="toggleDropdown(event)">Shop</a>
+          <ul class="dropdown-menu">
+            <li class="sub-dropdown">
+              <a href="#" onclick="toggleSubDropdown(event)">Clothing</a>
+              <ul class="sub-menu">
+                <li><a href="apparel-women.html">Women</a></li>
+                <li><a href="apparel-women-dresses.html">Dresses</a></li>
+                <li><a href="apparel-women-bags.html">Hand Bags</a></li>
+                <li><a href="apparel-men.html">Men</a></li>
+                <li><a href="apparel-men-shirts.html">Shirts</a></li>
+                <li><a href="apparel-men-pants.html">Pants</a></li>
+                <li><a href="apparel-men-suits.html">Suits</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#" onclick="toggleSubDropdown(event)">Electronics & Supplies</a>
+              <ul class="sub-menu">
+                <li><a href="materials-books.html">Books</a></li>
+                <li><a href="materials-phones.html">Phones</a></li>
+                <li><a href="materials-laptops.html">Laptops</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#" onclick="toggleSubDropdown(event)">Automotive</a>
+              <ul class="sub-menu">
+                <li><a href="vehicles-cars.html">Cars</a></li>
+                <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
+                <li><a href="vehicles-bicycles.html">Bicycles</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#" onclick="toggleSubDropdown(event)">Foods & Grains</a>
+              <ul class="sub-menu">
+                <li><a href="foods-tef.html">Tef</a></li>
+                <li><a href="foods-wheat.html">Wheat</a></li>
+                <li><a href="foods-tastefoods.html">Taste Foods</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#" onclick="toggleSubDropdown(event)">Gulit Market</a>
+              <ul class="sub-menu">
+                <li><a href="gulit-rice.html">Rice</a></li>
+                <li><a href="gulit-oil.html">Cooking Oil</a></li>
+                <li><a href="gulit-spices.html">Spices</a></li>
+                <li><a href="gulit-coffee.html">Ethiopian Coffee</a></li>
+                <li><a href="gulit-berbere.html">Berbere</a></li>
+                <li><a href="gulit-shiro.html">Shiro</a></li>
+                <li><a href="gulit-onions.html">Red Onions</a></li>
+                <li><a href="gulit-garlic.html">Garlic</a></li>
+                <li><a href="gulit-pasta.html">Macaroni / Pasta</a></li>
+                <li><a href="gulit-flour.html">Wheat Flour</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+ 
+  
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById("mainNav");
+      nav.classList.toggle("active");
+    }
+  
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest(".dropdown");
+      dropdown.classList.toggle("open");
+    }
+  
+    function toggleSubDropdown(event) {
+      event.preventDefault();
+      const subDropdown = event.target.closest(".sub-dropdown");
+      subDropdown.classList.toggle("open");
+    }
+  
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("header")) {
+        document.getElementById("mainNav").classList.remove("active");
+        document.querySelectorAll(".dropdown, .sub-dropdown").forEach(el => el.classList.remove("open"));
+      }
+    });
+  </script>
+  
+  
+     
       
       
       
