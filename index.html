@@ -164,6 +164,34 @@
                 padding: 10px 20px;
             }
         }
+
+
+        @media (max-width: 768px) {
+            nav ul {
+              flex-direction: column;
+              gap: 0;
+            }
+          
+            .dropdown-menu,
+            .sub-menu {
+              position: static !important; /* Remove absolute positioning */
+              width: 100%;
+              box-shadow: none;
+              animation: none;
+              display: none;
+              background-color: #fff;
+            }
+          
+            .dropdown-menu.show,
+            .sub-menu.show {
+              display: block;
+            }
+          
+            nav ul li a {
+              padding: 12px 16px;
+            }
+          }
+          
     </style>
 </head>
 <body>
@@ -571,7 +599,8 @@
       
               // Toggle the current one
               const submenu = this.nextElementSibling;
-              submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+              submenu.classList.toggle("show");
+
             });
           });
         });
