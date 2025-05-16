@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nile Online Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -61,7 +62,9 @@
         }
 
         .hero img {
-            height: 120px;
+            width: 65%;
+            max-width: 600px;
+            height: auto;
             margin-bottom: 20px;
         }
 
@@ -91,7 +94,7 @@
             background-color: #f3a847;
         }
 
-        .categories {
+        .categories, .featured-products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
@@ -99,22 +102,29 @@
             background-color: #fff;
         }
 
-        .category-box {
+        .category-box, .product-card {
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            text-align: center;
         }
 
-        .category-box h3 a {
+        .category-box:hover, .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-box h3 a, .product-card h3 {
             color: #007b8f;
             text-decoration: none;
+            font-size: 1.2em;
         }
 
         .category-box ul {
             list-style: none;
             padding-left: 0;
+            margin-top: 10px;
         }
 
         .category-box ul li {
@@ -132,23 +142,26 @@
             color: #007b8f;
         }
 
-        .category-box:hover {
-            transform: translateY(-5px);
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #007b8f;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2em;
             }
-
-            .hero img {
-                height: 80px;
-            }
-
             nav ul {
                 gap: 15px;
             }
-
             header {
                 padding: 10px 20px;
             }
@@ -222,8 +235,83 @@
                 <li><a href="foods-tastefoods.html">Taste Foods</a></li>
             </ul>
         </div>
-    </section>
 
+        <div class="category-box">
+            <h3><a href="gulit.html">Gulit - Grocery</a></h3>
+            <ul>
+                <li><a href="gulit-rice.html">Rice</a></li>
+                <li><a href="gulit-oil.html">Cooking Oil</a></li>
+                <li><a href="gulit-spices.html">Spices</a></li>
+                <li><a href="gulit-coffee.html">Ethiopian Coffee</a></li>
+                <li><a href="gulit-berbere.html">Berbere</a></li>
+                <li><a href="gulit-shiro.html">Shiro</a></li>
+                <li><a href="gulit-onions.html">Red Onions</a></li>
+                <li><a href="gulit-garlic.html">Garlic</a></li>
+                <li><a href="gulit-pasta.html">Macaroni / Pasta</a></li>
+                <li><a href="gulit-flour.html">Wheat Flour</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="featured-products" style="padding: 60px 40px; background-color: #fff;">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2em; color: #131921;">Shop Popular Items</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+      
+          <!-- Apparel -->
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="apparel-women-dresses.html">
+              <img src="https://tse1.mm.bing.net/th?id=OIP.UPTC32tp0qTzgcwiYpmzxAHaD0&pid=Api" alt="Women's Dress" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>Elegant Women's Dress</h3>
+              <p style="color: #007b8f; font-weight: bold;">$45.00</p>
+            </a>
+          </div>
+      
+          <!-- Materials -->
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="materials-laptops.html">
+              <img src="https://tse1.mm.bing.net/th?id=OIP.dWqybTqOrQ9yW7G1dWD0zQHaHa&pid=Api" alt="Laptop" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>High-Performance Laptop</h3>
+              <p style="color: #007b8f; font-weight: bold;">$799.00</p>
+            </a>
+          </div>
+      
+          <!-- Vehicles -->
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="vehicles-cars.html">
+              <img src="images/Car-market-sees-sharp-price-fall-min.jpg" alt="Used Sedan Car" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>Sedan Car - Used</h3>
+              <p style="color: #007b8f; font-weight: bold;">$4,500.00</p>
+            </a>
+          </div>
+      
+          <!-- Foods -->
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="foods-tef.html">
+              <img src="images/tef.jpg" alt="Ethiopian Tef" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>Ethiopian Tef - 5kg</h3>
+              <p style="color: #007b8f; font-weight: bold;">$18.00</p>
+            </a>
+          </div>
+      
+          <!-- Gulit -->
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="gulit-rice.html">
+              <img src="https://tse4.mm.bing.net/th?id=OIP.dnrqC_C8nheIByR1eLfhYwHaHa&pid=Api" alt="Gulit Rice" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>Gulit Rice - 10kg</h3>
+              <p style="color: #007b8f; font-weight: bold;">$22.50</p>
+            </a>
+          </div>
+      
+          <div style="background: #fafafa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <a href="gulit-oil.html">
+              <img src="images/oil.jpg" alt="Cooking Oil" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+              <h3>Cooking Oil - 3L</h3>
+              <p style="color: #007b8f; font-weight: bold;">$12.99</p>
+            </a>
+          </div>
+      
+        </div>
+      </section>
+      
     <script>
         function showWelcome() {
             alert("Welcome to Nile Online Market! Explore our trusted online deals.");

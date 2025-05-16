@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Women's Collection | Nile Online Market</title>
+  <title>Books & Literature | Nile Online Market</title>
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -57,6 +57,8 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: transform 0.3s;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
 
     .product-card img {
@@ -97,7 +99,7 @@
       text-decoration: underline;
     }
 
-    footer .grid {
+    footer .footer-grid {
       max-width: 1200px;
       margin: auto;
       display: grid;
@@ -123,32 +125,32 @@
     <div class="cart">Cart 🛒 (<span id="cart-count">0</span>)</div>
   </header>
 
-  <h1>Women's Collection</h1>
+  <h1>Books & Literature</h1>
 
   <div class="products">
-    <div class="product-card" onclick="window.location.href='product-dress.html'">
-      <img src="dress1.jpg" alt="Elegant Women's Dress">
-      <h3>Elegant Women's Dress</h3>
-      <div class="price">$80.00</div>
-    </div>
+    <a href="product-book1.html" class="product-card">
+      <img src="book1.jpg" alt="Classic Fiction Book">
+      <h3>Classic Fiction</h3>
+      <div class="price">$12.99</div>
+    </a>
 
-    <div class="product-card" onclick="window.location.href='product-handbag.html'">
-      <img src="handbag1.jpg" alt="Luxury Hand Bag">
-      <h3>Luxury Hand Bag</h3>
-      <div class="price">$120.00</div>
-    </div>
+    <a href="product-book2.html" class="product-card">
+      <img src="book2.jpg" alt="Inspirational Biography">
+      <h3>Inspirational Biography</h3>
+      <div class="price">$18.50</div>
+    </a>
 
-    <div class="product-card" onclick="window.location.href='product-dress2.html'">
-      <img src="dress2.jpg" alt="Casual Floral Dress">
-      <h3>Casual Floral Dress</h3>
-      <div class="price">$59.99</div>
-    </div>
+    <a href="product-book3.html" class="product-card">
+      <img src="book3.jpg" alt="Children's Story Book">
+      <h3>Children's Story</h3>
+      <div class="price">$9.75</div>
+    </a>
 
-    <div class="product-card" onclick="window.location.href='product-handbag2.html'">
-      <img src="handbag2.jpg" alt="Designer Shoulder Bag">
-      <h3>Designer Shoulder Bag</h3>
-      <div class="price">$89.00</div>
-    </div>
+    <a href="product-book4.html" class="product-card">
+      <img src="book4.jpg" alt="Educational Textbook">
+      <h3>Educational Textbook</h3>
+      <div class="price">$25.00</div>
+    </a>
   </div>
 
   <script>
@@ -159,9 +161,9 @@
   </script>
 
   <footer>
-    <div class="grid">
+    <div class="footer-grid">
       <div>
-        <img src="logo.png" alt="Nile Online Market" style="height: 50px; margin-bottom: 15px;" />
+        <img src="logo.png" alt="Nile Online Market" style="height: 50px; margin-bottom: 15px;">
         <p>Your trusted online market for quality products, fast delivery, and unbeatable prices.</p>
       </div>
       <div>
@@ -187,7 +189,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2024 Nile Online Market. All rights reserved.
+      © 2025 Nile Online Market. All rights reserved.
     </div>
   </footer>
 </body>

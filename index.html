@@ -92,7 +92,7 @@
             background-color: #f3a847;
         }
 
-        .categories {
+        .categories, .featured-products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
@@ -100,22 +100,29 @@
             background-color: #fff;
         }
 
-        .category-box {
+        .category-box, .product-card {
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            text-align: left;
         }
 
-        .category-box h3 a {
+        .category-box:hover, .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-box h3 a, .product-card h3 {
             color: #007b8f;
             text-decoration: none;
+            font-size: 1.2em;
         }
 
         .category-box ul {
             list-style: none;
             padding-left: 0;
+            margin-top: 10px;
         }
 
         .category-box ul li {
@@ -133,23 +140,26 @@
             color: #007b8f;
         }
 
-        .category-box:hover {
-            transform: translateY(-5px);
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #007b8f;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2em;
             }
-
-            .hero img {
-                height: 80px;
-            }
-
             nav ul {
                 gap: 15px;
             }
-
             header {
                 padding: 10px 20px;
             }
@@ -158,19 +168,161 @@
 </head>
 <body>
 
-    <header>
+    <style>
+       
+            nav ul {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              gap: 30px;
+              position: relative;
+            }
+          
+            nav ul li {
+              position: relative;
+            }
+          
+            nav ul li a {
+              color: #fff;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 14px;
+              text-transform: uppercase;
+              transition: color 0.3s ease;
+              padding: 10px;
+              display: inline-block;
+            }
+          
+            nav ul li a:hover {
+              color: #febd69;
+            }
+          
+            .dropdown-menu,
+            .sub-menu {
+              display: none;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              background-color: #fff;
+              color: #333;
+              min-width: 200px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              z-index: 999;
+              animation: fadeIn 0.3s ease-in-out;
+            }
+          
+            .dropdown:hover .dropdown-menu,
+            .sub-dropdown:hover .sub-menu {
+              display: block;
+            }
+          
+            .dropdown-menu li,
+            .sub-menu li {
+              position: relative;
+            }
+          
+            .dropdown-menu a,
+            .sub-menu a {
+              color: #131921;
+              text-decoration: none;
+              display: block;
+              padding: 10px 15px;
+              font-size: 14px;
+              white-space: nowrap;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
+          
+            .dropdown-menu a:hover,
+            .sub-menu a:hover {
+              background-color: #f5f5f5;
+              color: #007b8f;
+            }
+          
+            .sub-menu {
+              top: 0;
+              left: auto;
+              right: 100%; /* Push sub-menu to the left side */
+            }
+          
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(5px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+         
+      </style>
+      
+      <header>
         <div class="logo">
-            <img src="logo.png" alt="Nile Online Market Logo">
+          <img src="logo.png" alt="Nile Online Market Logo">
         </div>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Shop</a>
+              <ul class="dropdown-menu">
+                <li class="sub-dropdown">
+                  <a href="#">Clothing</a>
+                  <ul class="sub-menu">
+                    <li><a href="apparel-women.html">Women</a></li>
+                    <li><a href="apparel-women-dresses.html">Dresses</a></li>
+                    <li><a href="apparel-women-bags.html">Hand Bags</a></li>
+                    <li><a href="apparel-men.html">Men</a></li>
+                    <li><a href="apparel-men-shirts.html">Shirts</a></li>
+                    <li><a href="apparel-men-pants.html">Pants</a></li>
+                    <li><a href="apparel-men-suits.html">Suits</a></li>
+                  </ul>
+                </li>
+                <li class="sub-dropdown">
+                  <a href="#">Electronics & Supplies</a>
+                  <ul class="sub-menu">
+                    <li><a href="materials-books.html">Books</a></li>
+                    <li><a href="materials-phones.html">Phones</a></li>
+                    <li><a href="materials-laptops.html">Laptops</a></li>
+                  </ul>
+                </li>
+                <li class="sub-dropdown">
+                  <a href="#">Automotive</a>
+                  <ul class="sub-menu">
+                    <li><a href="vehicles-cars.html">Cars</a></li>
+                    <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
+                    <li><a href="vehicles-bicycles.html">Bicycles</a></li>
+                  </ul>
+                </li>
+                <li class="sub-dropdown">
+                  <a href="#">Foods & Grains</a>
+                  <ul class="sub-menu">
+                    <li><a href="foods-tef.html">Tef</a></li>
+                    <li><a href="foods-wheat.html">Wheat</a></li>
+                    <li><a href="foods-tastefoods.html">Taste Foods</a></li>
+                  </ul>
+                </li>
+                <li class="sub-dropdown">
+                  <a href="#">Gulit Market</a>
+                  <ul class="sub-menu">
+                    <li><a href="gulit-rice.html">Rice</a></li>
+                    <li><a href="gulit-oil.html">Cooking Oil</a></li>
+                    <li><a href="gulit-spices.html">Spices</a></li>
+                    <li><a href="gulit-coffee.html">Ethiopian Coffee</a></li>
+                    <li><a href="gulit-berbere.html">Berbere</a></li>
+                    <li><a href="gulit-shiro.html">Shiro</a></li>
+                    <li><a href="gulit-onions.html">Red Onions</a></li>
+                    <li><a href="gulit-garlic.html">Garlic</a></li>
+                    <li><a href="gulit-pasta.html">Macaroni / Pasta</a></li>
+                    <li><a href="gulit-flour.html">Wheat Flour</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
         </nav>
-    </header>
+      </header>
+      
 
     <section class="hero">
         <img src="logo.png" alt="Nile Logo Hero">
@@ -181,50 +333,185 @@
 
     <section class="categories">
         <div class="category-box">
-            <h3><a href="apparel.html">Apparel</a></h3>
-            <ul>
-                <li><a href="apparel-women.html">Women</a></li>
-                <ul>
-                    <li><a href="apparel-women-dresses.html">Dresses</a></li>
-                    <li><a href="apparel-women-bags.html">Hand Bags</a></li>
-                </ul>
-                <li><a href="apparel-men.html">Men</a></li>
-                <ul>
-                    <li><a href="apparel-men-shirts.html">Shirts</a></li>
-                    <li><a href="apparel-men-pants.html">Pants</a></li>
-                    <li><a href="apparel-men-suits.html">Suits</a></li>
-                </ul>
-            </ul>
+          <h3><a href="apparel.html">Clothing</a></h3>
+          <ul>
+            <li><a href="apparel-women.html">Women's Collection</a></li>
+            <li><a href="apparel-women-dresses.html">Elegant Dresses</a></li>
+            <li><a href="apparel-women-bags.html">Designer Handbags</a></li>
+            <li><a href="apparel-men.html">Men's Collection</a></li>
+            <li><a href="apparel-men-shirts.html">Casual Shirts</a></li>
+            <li><a href="apparel-men-pants.html">Comfort Pants</a></li>
+            <li><a href="apparel-men-suits.html">Tailored Suits</a></li>
+          </ul>
         </div>
-
+      
         <div class="category-box">
-            <h3><a href="materials.html">Materials</a></h3>
-            <ul>
-                <li><a href="materials-books.html">Books</a></li>
-                <li><a href="materials-phones.html">Phones</a></li>
-                <li><a href="materials-laptops.html">Laptops</a></li>
-            </ul>
+          <h3><a href="materials.html">Electronics & Supplies</a></h3>
+          <ul>
+            <li><a href="materials-books.html">Books & Literature</a></li>
+            <li><a href="materials-phones.html">Smartphones</a></li>
+            <li><a href="materials-laptops.html">Laptops & Notebooks</a></li>
+          </ul>
         </div>
-
+      
         <div class="category-box">
-            <h3><a href="vehicles.html">Vehicles</a></h3>
-            <ul>
-                <li><a href="vehicles-cars.html">Cars</a></li>
-                <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
-                <li><a href="vehicles-bicycles.html">Bicycles</a></li>
-            </ul>
+          <h3><a href="vehicles.html">Automotive</a></h3>
+          <ul>
+            <li><a href="vehicles-cars.html">Cars & Sedans</a></li>
+            <li><a href="vehicles-motorcycles.html">Motorcycles</a></li>
+            <li><a href="vehicles-bicycles.html">Bicycles</a></li>
+          </ul>
         </div>
-
+      
         <div class="category-box">
-            <h3><a href="foods.html">Foods & Grains</a></h3>
-            <ul>
-                <li><a href="foods-tef.html">Tef</a></li>
-                <li><a href="foods-wheat.html">Wheat</a></li>
-                <li><a href="foods-tastefoods.html">Taste Foods</a></li>
-            </ul>
+          <h3><a href="foods.html">Food & Grains</a></h3>
+          <ul>
+            <li><a href="foods-tef.html">Tef Grain</a></li>
+            <li><a href="foods-wheat.html">Whole Wheat</a></li>
+            <li><a href="foods-tastefoods.html">Traditional Taste Foods</a></li>
+          </ul>
         </div>
-    </section>
-
+      
+        <div class="category-box">
+          <h3><a href="gulit.html">Grocery Essentials</a></h3>
+          <ul>
+            <li><a href="gulit-rice.html">Premium Rice</a></li>
+            <li><a href="gulit-oil.html">Cooking Oil</a></li>
+            <li><a href="gulit-spices.html">Authentic Spices</a></li>
+            <li><a href="gulit-coffee.html">Ethiopian Coffee</a></li>
+            <li><a href="gulit-berbere.html">Berbere Blend</a></li>
+            <li><a href="gulit-shiro.html">Shiro Powder</a></li>
+            <li><a href="gulit-onions.html">Red Onions</a></li>
+            <li><a href="gulit-garlic.html">Fresh Garlic</a></li>
+            <li><a href="gulit-pasta.html">Macaroni / Pasta</a></li>
+            <li><a href="gulit-flour.html">Wheat Flour</a></li>
+          </ul>
+        </div>
+      </section>
+      
+      <section class="featured-products" style="padding: 60px 0; background-color: #fff;">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2em; color: #131921;">Shop Popular Items</h2>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+          <!-- Example Product Cards -->
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-woman-dress-model-8261013_960_720.jpg" alt="Elegant Dress">
+            <h3>Elegant Dress</h3>
+            <p>$42.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-woman-dress-model-8261013_960_720.jpg" alt="Casual Floral Dress">
+            <h3>Floral Dress</h3>
+            <p>$38.50</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-woman-dress-model-8261013_960_720.jpg" alt="Casual Floral Dress">
+            <h3>Floral Dress</h3>
+            <p>$38.50</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-woman-dress-model-8261013_960_720.jpg" alt="Vintage Dress">
+            <h3>Vintage Dress</h3>
+            <p>$55.00</p>
+          </div>
+      
+          <!-- Women - Hand Bags -->
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://thumbs.dreamstime.com/b/ai-generated-illustration-three-stylish-handbags-blue-gold-black-colors-chic-handles-306457028.jpg" alt="Handbag Set">
+            <h3>Stylish Handbag</h3>
+            <p>$32.99</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://static.vecteezy.com/system/resources/previews/037/157/598/large_2x/ai-generated-handbags-and-purses-of-light-blue-and-red-photo.jpg" alt="Elegant Red Bag">
+            <h3>Elegant Red Bag</h3>
+            <p>$29.99</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-women.html'">
+            <img src="https://static.vecteezy.com/system/resources/previews/037/157/598/large_2x/ai-generated-handbags-and-purses-of-light-blue-and-red-photo.jpg" alt="Blue Clutch">
+            <h3>Blue Clutch</h3>
+            <p>$24.95</p>
+          </div>
+      
+          <!-- Men - Shirts -->
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://img.freepik.com/premium-ai-image/tshirt-design-ai-generated_50589717.jpg" alt="Graphic Shirt">
+            <h3>Graphic Shirt</h3>
+            <p>$19.99</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://img.freepik.com/premium-ai-image/t-shirt-men-design-ai-generated_63629301.jpg" alt="White Tee">
+            <h3>White Tee</h3>
+            <p>$15.50</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://img.freepik.com/premium-ai-image/t-shirt-men-design-ai-generated_63629301.jpg" alt="Slim Fit Shirt">
+            <h3>Slim Fit Shirt</h3>
+            <p>$22.00</p>
+          </div>
+      
+          <!-- Men - Pants -->
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://cgdream.ai/gallery/ai-generated-pants-images" alt="Casual Jeans">
+            <h3>Casual Jeans</h3>
+            <p>$34.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://cgdream.ai/gallery/ai-generated-pants-images" alt="Formal Trousers">
+            <h3>Formal Trousers</h3>
+            <p>$39.99</p>
+          </div>
+      
+          <!-- Men - Suits -->
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://img.freepik.com/premium-ai-image/fashionable-mens-suits-clothing-collection-ai-generated_59994772.jpg" alt="Classic Suit">
+            <h3>Classic Suit</h3>
+            <p>$199.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='apparel-men.html'">
+            <img src="https://img.freepik.com/premium-photo/ai-generated-portrait-man-wearing-suit-with-tie_61474229.jpg" alt="Blue Suit">
+            <h3>Blue Suit</h3>
+            <p>$210.00</p>
+          </div>
+      
+          <!-- Materials - Books -->
+          <div class="product-card" onclick="window.location.href='materials-books.html'">
+            <img src="https://img.freepik.com/premium-ai-image/books-are-source-inspiration-imagination-ai-generated_43796170.jpg" alt="Book Stack">
+            <h3>Classic Book Set</h3>
+            <p>$12.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='materials-books.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-books-stack-literature-8456651_960_720.jpg" alt="Literature Set">
+            <h3>Literature Set</h3>
+            <p>$18.50</p>
+          </div>
+      
+          <!-- Materials - Phones -->
+          <div class="product-card" onclick="window.location.href='materials-phones.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-mobile-phone-smartphone-8535367_960_720.jpg" alt="Smartphone 1">
+            <h3>Smartphone A1</h3>
+            <p>$349.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='materials-phones.html'">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/20/41/ai-generated-mobile-phone-smartphone-8535367_960_720.jpg" alt="Smartphone 2">
+            <h3>Smartphone B2</h3>
+            <p>$299.00</p>
+          </div>
+      
+          <!-- Materials - Laptops -->
+          <div class="product-card" onclick="window.location.href='materials-laptops.html'">
+            <img src="https://img.freepik.com/premium-ai-image/modern-exclusive-laptop-image-generated-ai_55482591.jpg" alt="Modern Laptop">
+            <h3>Modern Laptop</h3>
+            <p>$750.00</p>
+          </div>
+          <div class="product-card" onclick="window.location.href='materials-laptops.html'">
+            <img src="https://img.freepik.com/premium-ai-image/modern-exclusive-laptop-image-generated-ai_55482826.jpg" alt="Slim Laptop">
+            <h3>Slim Laptop</h3>
+            <p>$699.99</p>
+          </div>
+      
+        </div>
+      </section>
+      
+      
     <script>
         function showWelcome() {
             alert("Welcome to Nile Online Market! Explore our trusted online deals.");
