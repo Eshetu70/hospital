@@ -281,13 +281,19 @@
             }
          
       </style>
-      
-      <header>
-        <div class="logo">
-          <img src="logo.png" alt="Nile Online Market Logo">
+      <header class="site-header">
+        <div class="header-top">
+          <div class="logo">
+            <img src="logo.png" alt="Nile Online Market Logo">
+          </div>
+          <button class="nav-toggle" onclick="toggleNav()">☰</button>
         </div>
-        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      
         <nav id="mainNav">
+          <div class="nav-header">
+            <span>Menu</span>
+            <button class="close-btn" onclick="toggleNav()">✕</button>
+          </div>
           <ul class="main-menu">
             <li><a href="#">Home</a></li>
             <li class="dropdown">
@@ -347,42 +353,110 @@
               </ul>
             </li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Menu</a></li>
           </ul>
         </nav>
       </header>
       
       <style>
-        .nav-toggle {
-          display: none;
+        .site-header {
+          background-color: #131921;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+      
+        .header-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+        }
+      
+        .logo img {
+          height: 45px;
+          object-fit: contain;
+        }
+      
+        .nav-toggle,
+        .close-btn {
           font-size: 26px;
-          color: white;
           background: none;
           border: none;
+          color: white;
           cursor: pointer;
+          display: none;
+        }
+      
+        .nav-header {
+          display: none;
+          justify-content: space-between;
+          align-items: center;
+          background: #131921;
+          padding: 10px 20px;
+        }
+      
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          gap: 30px;
+          flex-wrap: wrap;
+        }
+      
+        nav ul li {
+          position: relative;
         }
       
         nav ul li a {
+          color: white;
+          text-decoration: none;
+          padding: 14px 20px;
+          display: block;
+          font-weight: bold;
           background-color: #131921;
         }
       
-        .dropdown-menu {
+        .dropdown-menu,
+        .sub-menu {
+          display: none;
+          flex-direction: column;
           background-color: #febd69;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 999;
+          min-width: 220px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
       
-        .dropdown-menu li a {
+        .dropdown:hover > .dropdown-menu,
+        .sub-dropdown:hover > .sub-menu {
+          display: flex;
+        }
+      
+        /* DROP LEFT submenu */
+        .sub-dropdown .sub-menu {
+          top: 0;
+          right: 100%;
+          left: auto;
+          background-color: #fff5e6;
+        }
+      
+        .dropdown-menu a,
+        .sub-menu a {
           background-color: #fff;
           color: #131921;
+          padding: 12px 20px;
+          font-style: italic;
           border-bottom: 1px solid #eee;
         }
       
-        .dropdown-menu li a:hover {
-          background-color: #f5f5f5;
+        .dropdown-menu a:hover,
+        .sub-menu a:hover {
+          background-color: #ffe0b2;
           color: #007b8f;
-        }
-      
-        .sub-menu li a {
-          font-style: italic;
         }
       
         @media (max-width: 768px) {
@@ -390,71 +464,81 @@
             display: block;
           }
       
+          .nav-header {
+            display: flex;
+          }
+      
           nav {
             display: none;
+            flex-direction: column;
+            background-color: #131921;
             width: 100%;
           }
       
           nav.active {
-            display: block;
+            display: flex;
           }
       
-          nav ul.main-menu {
+          nav ul {
             flex-direction: column;
             gap: 0;
-            background-color: #131921;
           }
       
-          nav ul.main-menu > li > a {
-            padding: 14px 20px;
+          nav ul li a {
             border-top: 1px solid #222;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: #131921;
-            color: white;
           }
       
-          .dropdown-menu,
-          .sub-menu {
-            position: static;
-            width: 100%;
+          /* Disable hover on mobile */
+          .dropdown:hover .dropdown-menu,
+          .sub-dropdown:hover .sub-menu {
             display: none;
-            background-color: #fff;
           }
       
           .dropdown.open .dropdown-menu,
           .sub-dropdown.open .sub-menu {
-            display: block;
+            display: flex;
+            position: static;
+            background-color: #fff3e0;
+          }
+      
+          .sub-menu {
+            background-color: #fff8dc;
           }
         }
       </style>
       
       <script>
         function toggleNav() {
-          const nav = document.getElementById('mainNav');
-          nav.classList.toggle('active');
-          // Close all dropdowns when main menu is toggled
-          document.querySelectorAll('.dropdown, .sub-dropdown').forEach(el => {
-            el.classList.remove('open');
-          });
+          const nav = document.getElementById("mainNav");
+          nav.classList.toggle("active");
+          document.querySelectorAll(".dropdown, .sub-dropdown").forEach(el => el.classList.remove("open"));
         }
       
         function toggleDropdown(event) {
           event.preventDefault();
-          const parent = event.target.closest('.dropdown');
-          const isOpen = parent.classList.contains('open');
-          document.querySelectorAll('.dropdown').forEach(el => el.classList.remove('open'));
-          if (!isOpen) parent.classList.add('open');
+          const dropdown = event.target.closest(".dropdown");
+          const isOpen = dropdown.classList.contains("open");
+          document.querySelectorAll(".dropdown").forEach(el => el.classList.remove("open"));
+          if (!isOpen) dropdown.classList.add("open");
         }
       
         function toggleSubDropdown(event) {
           event.preventDefault();
-          const parent = event.target.closest('.sub-dropdown');
-          const isOpen = parent.classList.contains('open');
-          document.querySelectorAll('.sub-dropdown').forEach(el => el.classList.remove('open'));
-          if (!isOpen) parent.classList.add('open');
+          const sub = event.target.closest(".sub-dropdown");
+          const isOpen = sub.classList.contains("open");
+          document.querySelectorAll(".sub-dropdown").forEach(el => el.classList.remove("open"));
+          if (!isOpen) sub.classList.add("open");
         }
+      
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest("header")) {
+            document.getElementById("mainNav").classList.remove("active");
+            document.querySelectorAll(".dropdown, .sub-dropdown").forEach(el => el.classList.remove("open"));
+          }
+        });
       </script>
+      
+      
       
       
       
