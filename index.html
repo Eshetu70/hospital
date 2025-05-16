@@ -125,7 +125,7 @@
       
         .dropdown-menu a,
         .sub-menu a {
-          background-color: #fff;
+          background-color: #fff;  
           color: #131921;
           padding: 12px 20px;
           font-style: italic;
@@ -327,6 +327,53 @@
             background-color: #ccc;
             border-radius: 4px;
           }
+
+
+          /* Distinct style for category headers inside dropdown (like "Clothing", "Gulit Market") */
+/* 🔹 Dropdown Category Headers (e.g., "Clothing", "Gulit Market") */
+.sub-dropdown > a {
+    background-color: #fef3e0;
+    font-weight: 700;
+    color: #1a1a1a;
+    padding: 14px 24px;
+    font-size: 15px;
+    border-bottom: 1px solid #f0e0c0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* 🔹 Category Hover State */
+  .sub-dropdown > a:hover {
+    background-color: #fde2b5;
+    color: #005f73;
+  }
+  
+  /* 🔸 Submenu Items (e.g., "Wheat Flour", "Garlic") */
+  .sub-menu li > a {
+    background-color: #ffffff;
+    color: #333;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f2f2;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  
+  /* 🔸 Submenu Item Hover State */
+  .sub-menu li > a:hover {
+    background-color: #e9f5ff;
+    color: #007b8f;
+  }
+  
+  /* ✅ Scrollbar refinement for long lists */
+  .sub-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+  .sub-menu::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  
+  
           
       </style>
       
