@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile - Nile Online Market</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #131921;
+      margin-bottom: 20px;
+    }
+
+    .profile-info, .order-list {
+      margin-bottom: 30px;
+    }
+
+    .order {
+      border: 1px solid #ddd;
+      border-left: 5px solid #febd69;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .order h3 {
+      margin: 0 0 10px;
+      color: #007b8f;
+    }
+
+    .order p {
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Profile</h1>
+    <div class="profile-info" id="profileInfo">
+      <p>Loading profile...</p>
+    </div>
+
+    <div class="order-list" id="orderList">
+      <h2>Order History</h2>
+      <p>Loading orders...</p>
+    </div>
+  </div>
+
+  <script>
+    // Firebase config (same as your main site)
+    const firebaseConfig = {
+      apiKey: "AIzaSyD4DGWnXcK8tI0eExe7B7lsBsbT78zwXp4",
+      authDomain: "auth-5a12b.firebaseapp.com",
+      projectId: "auth-5a12b",
+      storageBucket: "auth-5a12b.appspot.com",
+      messagingSenderId: "1022649726429",
+      appId: "1:1022649726429:web:b07f8ee9ddb30360a2f234",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    auth.onAuthStateChanged(user => {
+      const profileInfo = document.getElementById("profileInfo");
+      const orderList = document.getElementById("orderList");
+
+      if (user) {
+        profileInfo.innerHTML = `
+          <p><strong>Name:</strong> ${user.displayName || 'N/A'}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+        `;
+
+        // Load orders
+        db.collection("users")
+          .doc(user.uid)
+          .collection("orders")
+          .orderBy("date", "desc")
+          .get()
+          .then(snapshot => {
+            if (snapshot.empty) {
+              orderList.innerHTML += "<p>No orders found.</p>";
+              return;
+            }
+            orderList.innerHTML = "<h2>Order History</h2>";
+            snapshot.forEach(doc => {
+              const data = doc.data();
+              const orderElement = document.createElement("div");
+              orderElement.classList.add("order");
+              orderElement.innerHTML = `
+                <h3>Order ID: ${doc.id}</h3>
+                <p><strong>Date:</strong> ${data.date.toDate().toLocaleString()}</p>
+                <p><strong>Status:</strong> ${data.status}</p>
+                <p><strong>Total:</strong> $${data.total.toFixed(2)}</p>
+                <p><strong>Items:</strong></p>
+                <ul>
+                  ${(data.items || []).map(item => `<li>${item.name} - $${item.price}</li>`).join("")}
+                </ul>
+              `;
+              orderList.appendChild(orderElement);
+            });
+          })
+          .catch(error => {
+            orderList.innerHTML += `<p>Error loading orders: ${error.message}</p>`;
+          });
+      } else {
+        profileInfo.innerHTML = "<p>Please <a href='index.html'>log in</a> to view your profile.</p>";
+        orderList.innerHTML = "";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -10,6 +10,9 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyD4DGWnXcK8tI0eExe7B7lsBsbT78zwXp4",
@@ -720,7 +723,12 @@
         </div>
       </section>
       
+
+
     <section class="featured-products" style="padding: 60px 40px; background-color: #fff;">
+
+     
+      
        
           <!-- Women - Dresses -->
           <div class="product-card" onclick="window.location.href='apparel-women.html'">
@@ -960,16 +968,43 @@
             });
         }
       
+     
         auth.onAuthStateChanged(user => {
           const authLinks = document.querySelector(".auth-links");
           if (user) {
             authLinks.innerHTML = `
               <span style="color:#febd69; font-weight:600;">Hello, ${user.displayName || user.email}</span>
+              <a href="profile.html" style="margin-left: 10px; color:#fff; font-weight:600;">My Profile</a>
               <button onclick="logout()" style="margin-left: 10px; padding: 6px 12px; background-color: #febd69; border: none; color: #131921; font-weight: bold; cursor: pointer;">Logout</button>
             `;
           }
         });
+        
       </script>
+
+
+      <script>
+        db.collection("products").orderBy("date_added", "desc").get().then(snapshot => {
+          const list = document.getElementById("product-list");
+          snapshot.forEach(doc => {
+            const p = doc.data();
+            const productCard = document.createElement("div");
+            productCard.classList.add("product-card");
+            productCard.style = "width: 220px; margin: 10px; display:inline-block; vertical-align:top; text-align:center;";
+      
+            productCard.innerHTML = `
+              <img src="${p.image_url}" alt="${p.name}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
+              <h3 style="color:#007b8f;">${p.name}</h3>
+              <p style="font-weight:bold;">$${p.price.toFixed(2)}</p>
+            `;
+            list.appendChild(productCard);
+          });
+        }).catch(err => {
+          console.error("Failed to load products:", err);
+        });
+      </script>
+      
+
       
        <script src="scripts/HTMLInclude.js"></script>
 </body>
