@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Men's Collection | Nile Online Market</title>
+  <link rel="stylesheet" href="css/css.css">
+  <script src="scripts/scripts.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -145,20 +147,25 @@
 <body>
 
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Nile Online Market Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+    <div data-include="components/header.html"></div>
     <div class="cart">Cart 🛒 (<span id="cart-count">0</span>)</div>
   </header>
-
+  <div id="loginModal" style="display:none;">
+    <h2>Login</h2>
+    <input type="text" placeholder="Email" /><br />
+    <input type="password" placeholder="Password" /><br />
+    <button onclick="loginUser()">Login</button>
+    <button onclick="closeModals()">Cancel</button>
+  </div>
+  
+  <div id="signupModal" style="display:none;">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Full Name" /><br />
+    <input type="text" placeholder="Email" /><br />
+    <input type="password" placeholder="Password" /><br />
+    <button onclick="registerUser()">Register</button>
+    <button onclick="closeModals()">Cancel</button>
+  </div>
   <section class="page-title">
     <h1>Men's Collection</h1>
   </section>
@@ -243,5 +250,6 @@
       © 2024 Nile Online Market. All rights reserved.
     </div>
   </footer>
+  <script src="scripts/HTMLInclude.js"></script>
 </body>
 </html>

@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nile Online Market</title>
+
+
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4DGWnXcK8tI0eExe7B7lsBsbT78zwXp4",
+    authDomain: "auth-5a12b.firebaseapp.com",
+    projectId: "auth-5a12b",
+    storageBucket: "auth-5a12b.firebasestorage.app",
+    messagingSenderId: "1022649726429",
+    appId: "1:1022649726429:web:b07f8ee9ddb30360a2f234",
+    measurementId: "G-49S2Y2T732"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>
+
     <style>
         * {
           margin: 0;
@@ -374,6 +396,111 @@
   }
   
   
+
+
+  /* Modal Overlay */
+#loginModal,
+#signupModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 30px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2000;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+#loginModal h2,
+#signupModal h2 {
+  margin-bottom: 20px;
+  color: #131921;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#loginModal input,
+#signupModal input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#loginModal button,
+#signupModal button {
+  width: 48%;
+  padding: 10px 0;
+  margin: 4px 1%;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#loginModal button:first-of-type,
+#signupModal button:first-of-type {
+  background-color: #007b8f;
+  color: #fff;
+}
+
+#loginModal button:last-of-type,
+#signupModal button:last-of-type {
+  background-color: #ccc;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  #loginModal,
+  #signupModal {
+    width: 95%;
+    padding: 25px 20px;
+  }
+}
+
+
+
+.nav-toggle {
+    font-size: 28px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 16px; /* adds spacing from logo or nav items */
+  }
+  
+  .auth-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: 20px; /* spacing between nav-toggle and auth buttons */
+  }
+  
+  .auth-links button {
+    background-color: #febd69;
+    color: #131921;
+    padding: 8px 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-links button:hover {
+    background-color: #f3a847;
+    color: #000;
+  }
+  
           
       </style>
       
@@ -389,7 +516,13 @@
         <img src="logo.png" alt="Nile Online Market Logo">
       </div>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
-    </div>
+
+      <div class="auth-links">
+        <button onclick="showLogin()">Login</button>
+        <button onclick="showSignup()">Sign Up</button>
+      </div>
+      
+</div>
   
     <nav id="mainNav">
       <div class="nav-header">
@@ -460,6 +593,9 @@
   </header>
   
  
+
+  
+
   
   <script>
     function toggleNav() {
@@ -492,7 +628,22 @@
       
       
       
-      
+  <div id="loginModal" style="display:none;">
+    <h2>Login</h2>
+    <input type="text" placeholder="Email" /><br />
+    <input type="password" placeholder="Password" /><br />
+    <button onclick="loginUser()">Login</button>
+    <button onclick="closeModals()">Cancel</button>
+  </div>
+  
+  <div id="signupModal" style="display:none;">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Full Name" /><br />
+    <input type="text" placeholder="Email" /><br />
+    <input type="password" placeholder="Password" /><br />
+    <button onclick="registerUser()">Register</button>
+    <button onclick="closeModals()">Cancel</button>
+  </div>
       
 
     <section class="hero">
@@ -748,6 +899,78 @@
           });
         });
       </script>
+
+
+      <script>
+        function showLogin() {
+          document.getElementById('loginModal').style.display = 'block';
+          document.getElementById('signupModal').style.display = 'none';
+        }
       
+        function showSignup() {
+          document.getElementById('signupModal').style.display = 'block';
+          document.getElementById('loginModal').style.display = 'none';
+        }
+      
+        function closeModals() {
+          document.getElementById('loginModal').style.display = 'none';
+          document.getElementById('signupModal').style.display = 'none';
+        }
+      
+        function loginUser() {
+          const email = document.querySelector('#loginModal input[type="text"]').value;
+          const password = document.querySelector('#loginModal input[type="password"]').value;
+      
+          auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              alert("Logged in as: " + userCredential.user.email);
+              closeModals();
+            })
+            .catch((error) => {
+              alert("Login failed: " + error.message);
+            });
+        }
+      
+        function registerUser() {
+          const name = document.querySelector('#signupModal input[placeholder="Full Name"]').value;
+          const email = document.querySelector('#signupModal input[placeholder="Email"]').value;
+          const password = document.querySelector('#signupModal input[placeholder="Password"]').value;
+      
+          auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              return userCredential.user.updateProfile({ displayName: name });
+            })
+            .then(() => {
+              alert("Registration successful. Welcome!");
+              closeModals();
+            })
+            .catch((error) => {
+              alert("Signup failed: " + error.message);
+            });
+        }
+      
+        function logout() {
+          auth.signOut()
+            .then(() => {
+              alert("You have been logged out.");
+              location.reload();
+            })
+            .catch((error) => {
+              alert("Logout failed: " + error.message);
+            });
+        }
+      
+        auth.onAuthStateChanged(user => {
+          const authLinks = document.querySelector(".auth-links");
+          if (user) {
+            authLinks.innerHTML = `
+              <span style="color:#febd69; font-weight:600;">Hello, ${user.displayName || user.email}</span>
+              <button onclick="logout()" style="margin-left: 10px; padding: 6px 12px; background-color: #febd69; border: none; color: #131921; font-weight: bold; cursor: pointer;">Logout</button>
+            `;
+          }
+        });
+      </script>
+      
+       <script src="scripts/HTMLInclude.js"></script>
 </body>
 </html>
