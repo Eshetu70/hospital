@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Food Item | Nile Online Market</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; color: #333; }
+    header { background: #131921; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 50px; }
+    .cart { color: #fff; font-weight: 600; }
+
+    .product-detail { max-width: 1000px; margin: 60px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
+    .product-detail img { height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+    .product-detail h1 { margin-bottom: 10px; }
+    .product-detail p { color: #555; margin-bottom: 20px; }
+    .price { font-size: 1.5em; color: #007b8f; margin-bottom: 20px; }
+
+    .btn { padding: 12px 30px; background-color: #febd69; color: #131921; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; margin-right: 10px; text-transform: uppercase; }
+    .btn:hover { background-color: #f3a847; }
+  </style>
+</head>
+<body onload="updateCartCount(); loadFood();">
+
+  <header>
+    <div class="logo"><img src="logo.png" alt="Nile Online Market Logo"></div>
+    <div class="cart">Cart 🛒 (<span id="cart-count">0</span>)</div>
+  </header>
+
+  <div class="product-detail">
+    <img id="food-img" src="" alt="Food Image">
+    <h1 id="food-name"></h1>
+    <p id="food-desc"></p>
+    <div class="price" id="food-price"></div>
+    <button class="btn" onclick="addToCart()">Add to Cart</button>
+    <button class="btn" onclick="window.location.href='cart.html'">Go to Cart</button>
+  </div>
+
+  <script>
+    const foods = {
+      tef: {
+        name: "Organic Tef Grain",
+        price: 24.99,
+        desc: "Premium organic tef grain, rich in fiber and gluten-free. Ideal for injera and other traditional dishes.",
+        img: "tef.jpg"
+      },
+      tef2: {
+        name: "Brown Tef Grain - 500g",
+        price: 13.50,
+        desc: "Nutrient-dense brown tef grain. Perfect for making traditional flatbreads and porridge.",
+        img: "tef2.jpg"
+      },
+      tef3: {
+        name: "Tef Flour - 1kg",
+        price: 21.00,
+        desc: "Finely ground tef flour, ideal for baking and gluten-free recipes.",
+        img: "tef3.jpg"
+      },
+      tef4: {
+        name: "Roasted Tef Snack",
+        price: 9.99,
+        desc: "Crunchy roasted tef snack, a healthy choice for quick energy on the go.",
+        img: "tef4.jpg"
+      },
+      wheat: {
+        name: "Whole Wheat Flour",
+        price: 18.50,
+        desc: "Nutritious whole wheat flour perfect for baking and making wholesome meals.",
+        img: "wheat.jpg"
+      },
+      wheat2: {
+        name: "Wheat Berries - 1kg",
+        price: 15.00,
+        desc: "Whole wheat berries ideal for home milling or hearty salads.",
+        img: "wheat2.jpg"
+      },
+      wheat3: {
+        name: "Organic Wheat Flour - 2kg",
+        price: 28.00,
+        desc: "Organic stone-ground wheat flour for high-quality breads and pastries.",
+        img: "wheat3.jpg"
+      },
+      wheat4: {
+        name: "Toasted Wheat Snack",
+        price: 10.99,
+        desc: "Crunchy toasted wheat kernels, perfect as a nutritious snack.",
+        img: "wheat4.jpg"
+      }
+    };
+
+    function getQueryParam(key) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(key);
+    }
+
+    function loadFood() {
+      const id = getQueryParam('id');
+      const f = foods[id];
+      if (f) {
+        document.getElementById('food-name').textContent = f.name;
+        document.getElementById('food-desc').textContent = f.desc;
+        document.getElementById('food-price').textContent = `$${f.price.toFixed(2)}`;
+        document.getElementById('food-img').src = f.img;
+        document.title = `${f.name} | Nile Online Market`;
+      } else {
+        document.querySelector('.product-detail').innerHTML = '<p>Food item not found.</p>';
+      }
+    }
+
+    function addToCart() {
+      const id = getQueryParam('id');
+      const f = foods[id];
+      if (f) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name: f.name, price: f.price, image: f.img });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        alert("Added to Cart!");
+      }
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+  </script>
+</body>
+</html>

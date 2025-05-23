@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Vehicle | Nile Online Market</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; color: #333; }
+    header { background: #131921; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 50px; }
+    .cart { color: #fff; font-weight: 600; }
+
+    .product-detail { max-width: 1000px; margin: 60px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
+    .product-detail img { height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+    .product-detail h1 { margin-bottom: 10px; }
+    .product-detail p { color: #555; margin-bottom: 20px; }
+    .price { font-size: 1.5em; color: #007b8f; margin-bottom: 20px; }
+
+    .btn { padding: 12px 30px; background-color: #febd69; color: #131921; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; margin-right: 10px; text-transform: uppercase; }
+    .btn:hover { background-color: #f3a847; }
+  </style>
+</head>
+<body onload="updateCartCount(); loadVehicle();">
+
+  <header>
+    <div class="logo"><img src="logo.png" alt="Nile Online Market Logo"></div>
+    <div class="cart">Cart 🛒 (<span id="cart-count">0</span>)</div>
+  </header>
+
+  <div class="product-detail">
+    <img id="vehicle-img" src="" alt="Vehicle Image">
+    <h1 id="vehicle-name"></h1>
+    <p id="vehicle-desc"></p>
+    <div class="price" id="vehicle-price"></div>
+    <button class="btn" onclick="addToCart()">Add to Cart</button>
+    <button class="btn" onclick="window.location.href='cart.html'">Go to Cart</button>
+  </div>
+
+  <script>
+    const vehicles = {
+      // Cars
+      car1: { name: "2018 Sedan - Pre-Owned", price: 9500, desc: "Well-maintained sedan with low mileage and excellent fuel efficiency.", img: "car1.jpg" },
+      car2: { name: "2020 SUV - Premium", price: 16800, desc: "Spacious SUV with advanced features, great for family and long trips.", img: "car2.jpg" },
+      car3: { name: "2017 Hatchback - Compact", price: 7200, desc: "Economical and compact, perfect for city drives and easy parking.", img: "car3.jpg" },
+      car4: { name: "2019 Pickup Truck - Durable", price: 13400, desc: "Reliable and powerful pickup, ideal for work and heavy-duty use.", img: "car4.jpg" },
+
+      // Motorcycles
+      moto1: { name: "2021 Sport Bike", price: 5200, desc: "High-speed sport motorcycle with sleek design and powerful performance.", img: "moto1.jpg" },
+      moto2: { name: "2019 Cruiser", price: 4600, desc: "Comfortable cruiser bike ideal for long-distance travel.", img: "moto2.jpg" },
+      moto3: { name: "2020 Scooter", price: 2300, desc: "Fuel-efficient city scooter with modern style and reliability.", img: "moto3.jpg" },
+      moto4: { name: "2022 Adventure Bike", price: 6800, desc: "Rugged all-terrain adventure bike built for exploration.", img: "moto4.jpg" },
+
+      // Bicycles
+      bike1: { name: "2023 Mountain Bike", price: 1100, desc: "Durable mountain bike with front suspension, perfect for off-road trails.", img: "bike1.jpg" },
+      bike2: { name: "2022 Road Bike", price: 1300, desc: "Lightweight road bike with aerodynamic design and high-speed performance.", img: "bike2.jpg" },
+      bike3: { name: "2021 Hybrid Bike", price: 950, desc: "Comfortable hybrid bike suitable for both city and trail rides.", img: "bike3.jpg" },
+      bike4: { name: "2023 Electric Bike", price: 2200, desc: "Eco-friendly electric bike with pedal assist and long battery life.", img: "bike4.jpg" }
+    };
+
+    function getQueryParam(key) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(key);
+    }
+
+    function loadVehicle() {
+      const id = getQueryParam('id');
+      const v = vehicles[id];
+      if (v) {
+        document.getElementById('vehicle-name').textContent = v.name;
+        document.getElementById('vehicle-desc').textContent = v.desc;
+        document.getElementById('vehicle-price').textContent = `$${v.price.toLocaleString()}`;
+        document.getElementById('vehicle-img').src = v.img;
+        document.title = `${v.name} | Nile Online Market`;
+      } else {
+        document.querySelector('.product-detail').innerHTML = '<p>Vehicle not found.</p>';
+      }
+    }
+
+    function addToCart() {
+      const id = getQueryParam('id');
+      const v = vehicles[id];
+      if (v) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name: v.name, price: v.price, image: v.img });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        alert("Added to Cart!");
+      }
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+  </script>
+</body>
+</html>
